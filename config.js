@@ -2,12 +2,12 @@
 
 var admin = require("firebase-admin");
 
-var serviceAccount = require("./meoqi-91546-firebase-adminsdk-qpg6p-795cdd8eb0.json");
+var serviceAccount = require("./firebase_jsonfile_name.json");
 
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://meoqi-91546.firebaseio.com"
+  databaseURL: "https://firebase_project_name"
 })
 
 module.exports.admin = admin
