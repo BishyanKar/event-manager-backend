@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <!-- <link href="/vendor/fonts/circular-std/style.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="/libs/css/style.css">
+    <link rel="stylesheet" href="/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    
+
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            justify-content: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="splash-container m-5">
+        <div class="card ">
+            <div class="card-header text-center">
+                <h1>Admin login</h1>
+                <span class="splash-description">Please enter admin details.</span>
+            </div>
+            <div class="card-body">
+                <form action="/api/admin/view-login" method="POST">
+                    <div class="form-group">
+                        <input class="form-control form-control-lg" name="username" id="username" type="text"
+                            placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control form-control-lg" name="password" id="password" type="password"
+                            placeholder="Password">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="splash-container m-5">
+        <div class="card ">
+            <div class="card-header text-center">
+                <h1>User login</h1>
+                <span class="splash-description">Please enter user details.</span>
+            </div>
+            <div class="card-body">
+
+                <form action="/api/login/view-login" method="POST">
+                    <div class="form-group">
+                        <input class="form-control form-control-lg" name="username" id="username" type="text"
+                            placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control form-control-lg" name="password" id="password" type="password"
+                            placeholder="Password">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+                </form>
+                <a href="/api/signup" >Sign up</a>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Signup</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <!-- <link href="/vendor/fonts/circular-std/style.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="/libs/css/style.css">
+    <link rel="stylesheet" href="/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    
+
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            justify-content: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            margin-top: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="splash-container m-5">
+        <div class="card ">
+            <div class="card-header text-center">
+                <h1>Signup</h1>
+                <span class="splash-description">Please enter details.</span>
+            </div>
+            <div class="card-body">
+                <form action="/api/signup/view-signup" method="POST">
+                    <div class="form-group">
+                        <input class="form-control form-control-lg" name="username" id="username" type="text"
+                            placeholder="Username" autocomplete="off">
+                    </div>
+                    
+                    <div class="form-group">
+                        <input class="form-control form-control-lg" name="first_name" 
+                        id="first_name" type="first_name"
+                            placeholder="first_name" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control form-control-lg" 
+                        name="last_name" id="last_name" type="last_name"
+                            placeholder="last_name">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control form-control-lg" name="age" 
+                        id="age" type="age"
+                            placeholder="age" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control form-control-lg" 
+                        name="gender" id="gender" type="gender" placeholder="gender">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control form-control-lg" name="email" id="email" type="email"
+                            placeholder="Email" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control form-control-lg" name="password" id="password" type="password"
+                            placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control form-control-lg" name="retype_password" id="retype_password" type="password"
+                            placeholder="retype_password">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control form-control-lg" 
+                        name="country" id="country" type="country" placeholder="country">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control form-control-lg" name="state" 
+                        id="state" type="state"
+                            placeholder="state" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control form-control-lg" 
+                        name="city" id="city" type="city"
+                            placeholder="city">
+                    </div>
+ 
+
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+                </form>
+                <a href="/api/login" >Login</a>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

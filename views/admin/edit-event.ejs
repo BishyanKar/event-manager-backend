@@ -1,0 +1,582 @@
+<%- include('./header') %>
+
+    <form class="splash-container " action="/api/admin/edit-event-view/<%=b._id%>?_method=PUT" method="POST"  enctype="multipart/form-data">
+        <div class="card ">
+            <div class="card-header">
+                <h3 class="mb-1">Edit Event</h3>
+            </div>
+            <div class="card-body">
+                <div class="card-body">
+                    <div class="form-group" id="pick-image" style="display: block;" required="">
+                            <h6>Choose an Image</h6>
+                            <input class="form-control form-control-lg" name="images" type="file" accept="image/*" id="image">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control form-control-lg"  type="text" name="categories" placeholder="categories" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control form-control-lg" type="text"  name="name" placeholder="name" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control form-control-lg" type="text"  name="promotion" placeholder="Promotional Text" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" type="text" name="description" placeholder="Description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control form-control-lg" type="text"  name="country" placeholder="country" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control form-control-lg" type="text"  name="state" placeholder="state" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control form-control-lg" type="text"  name="city" placeholder="city" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control form-control-lg" type="text"  name="location" placeholder="location" autocomplete="off">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="">Start Date and Time</label>
+                        <input class="form-control form-control-lg"  type="datetime-local" name="start_date" placeholder="start_date" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="">End Date and Time</label>
+                        <input class="form-control form-control-lg" type="datetime-local"  name="end_date" placeholder="end_date" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control form-control-lg"  type="text" name="entry_fee" placeholder="entry_fee" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control form-control-lg" type="text"  name="currency" placeholder="currency" autocomplete="off">
+                    </div>
+    
+                    <div class="form-group">
+                        <input class="form-control form-control-lg" type="text"  name="guest_count" placeholder="Guest Count" autocomplete="off">
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="artists">Guest Options</label>
+    
+                        <button class="btn btn-outline btn-success" type="button" id="adder" 
+                        style="padding: 6px 10px; float: right;"
+                        onclick="addGuestOption()">Add</button>
+                        <hr>
+                        <div id="guestBoxes" class="list-group">
+    
+                        </div>
+                        
+    
+                    </div>
+                    
+
+                    <div class="form-group">
+                        <label for="artists">Artists</label>
+                        <hr>
+                        <div style="position: relative;">
+                            <input class="form-control form-control-lg" type="text" id="searchInput"  name="searchBox" placeholder="Search Artists">
+    
+                            <button class="btn btn-outline btn-success" type="button" id="adder" style="
+                            position: absolute;
+                            top: 6px;
+                            right: 5px;
+                            padding: 6px 10px;
+                        " onclick="searchArtist()">Search</button>
+                            <div id="searchResult">
+    
+                            </div>
+                        </div>
+                        <hr>
+                        <div id="artistBoxes" class="list-group">
+    
+                        </div>
+                        
+    
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="food">Food</label>
+                        <hr>
+                        <div style="position: relative;">
+                            <input class="form-control form-control-lg" type="text" id="searchInput1"  name="searchBox" placeholder="Search Food">
+    
+                            <button class="btn btn-outline btn-success" type="button" id="adder" style="
+                            position: absolute;
+                            top: 6px;
+                            right: 5px;
+                            padding: 6px 10px;
+                        " onclick="searchFood()">Search</button>
+                            <div id="searchResult1">
+    
+                            </div>
+                        </div>
+                        <hr>
+                        <div id="foodBoxes" class="list-group">
+    
+                        </div>
+                        
+    
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="drinks">Drinks</label>
+                        <hr>
+                        <div style="position: relative;">
+                            <input class="form-control form-control-lg" type="text" id="searchInput2"  name="searchBox" placeholder="Search Drinks">
+    
+                            <button class="btn btn-outline btn-success" type="button" id="adder" style="
+                            position: absolute;
+                            top: 6px;
+                            right: 5px;
+                            padding: 6px 10px;
+                        " onclick="searchDrink()">Search</button>
+                            <div id="searchResult2">
+    
+                            </div>
+                        </div>
+                        <hr>
+                        <div id="drinkBoxes" class="list-group">
+    
+                        </div>
+                        
+    
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="goodies">Goodies</label>
+                        <hr>
+                        <div style="position: relative;">
+                            <input class="form-control form-control-lg" type="text" id="searchInput3"  name="searchBox" placeholder="Search Goodies">
+    
+                            <button class="btn btn-outline btn-success" type="button" id="adder" style="
+                            position: absolute;
+                            top: 6px;
+                            right: 5px;
+                            padding: 6px 10px;
+                        " onclick="searchGoodie()">Search</button>
+                            <div id="searchResult3">
+    
+                            </div>
+                        </div>
+                        <hr>
+                        <div id="goodieBoxes" class="list-group">
+    
+                        </div>
+                        
+    
+                    </div>
+                    <div class="form-group">
+                        <label for="goodies">Ticket Types</label>
+                        <hr>
+                        <div style="position: relative;">
+                            <input class="form-control form-control-lg" type="text" id="searchInput4"  name="searchBox4" placeholder="Search Ticket Types">
+    
+                            <button class="btn btn-outline btn-success" type="button" id="adder" style="
+                            position: absolute;
+                            top: 6px;
+                            right: 5px;
+                            padding: 6px 10px;
+                        " onclick="searchType()">Search</button>
+                            <div id="searchResult4">
+    
+                            </div>
+                        </div>
+                        <hr>
+                        <div id="typeBoxes" class="list-group">
+    
+                        </div>
+                        
+    
+                    </div>
+                    
+                    
+                    
+    
+    
+                    <div class="form-group pt-2">
+                        <button class="btn btn-block btn-primary" type="submit">Update </button>
+                    </div>
+                 
+                   
+             
+            </div>
+        </form>
+        
+    <!-- 
+        <script src="../assets/libs/js/add-news.js"></script>
+        <script>
+        function ValidateSize(file) {
+            var FileSize = file.files[0].size / 1024 / 1024; // in MB
+            if (FileSize > 1) {
+                alert('File size exceeds 1 MB');
+            } else {
+    
+            }
+        }
+        </script> -->
+    
+    <style>
+        .searchImages{
+            height: 40px;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        #artistBoxes input{
+            margin: 3px;
+        }
+    </style>
+    
+    <script>
+        //-----------------------------------------------------------
+        //       ARTIST
+        //----------------------------------------------------------
+    
+        var num = 0
+        let box = document.querySelector('#artistBoxes')
+        let searchInput = document.querySelector('#searchInput')
+        let searchResult = document.querySelector('#searchResult')
+    
+        function searchArtist(){
+            search()
+        }
+    
+        async function search(){
+            const response = await fetch(window.location.href+'/searchArtist?query='+searchInput.value) 
+            const res = await response.json();
+            // console.log(res)
+            for(i = 0; i < res.items.length; i++){
+                let item = res.items[i]
+                // console.log(i,item)
+    
+                let newItem = document.createElement('div')
+                newItem.innerHTML = `
+                <div class="list-group-item list-group-item-action" id="searchBox" 
+                    onclick="addArtistBox('`+item.name+`','`+item.id+`')"
+                >
+                    <h5>`+item.name+`</h5>
+                    <img src="`+(item.images.length!=0?item.images[0].url : "")+`" alt="" class="searchImages">
+                </div>
+                `
+                searchResult.appendChild(newItem)
+            }
+        }
+        
+        function addArtistBox(name, id){
+            searchResult.innerHTML = ""
+            newBox = document.createElement('div')
+            newBox.innerHTML += `
+            <div id='div-`+num+`' style="position:relative">
+                <h3>`+name+`</h3>
+                <button 
+                    type="button" 
+                    class="btn vtn-outline btn-danger" 
+                    style="position: absolute; top: 0; right: 0; padding: 6px 10px;"
+                    onclick="document.querySelector('#div-`+num+`').hidden = true; document.querySelector('#artist-`+num+`').value='1'">
+                        Remove
+                </button>
+    
+                <input type="number" name="artists[`+num+`][deleted]" id="artist-`+num+`" value="0" hidden>
+                <input type="text"  name="artists[`+num+`][name]" value="`+name+`" hidden>
+                <input type="text"  name="artists[`+num+`][id]" value="`+id+`" hidden>
+                <input class="form-control form-control-lg" type="text"  name="artists[`+num+`][role]" placeholder="Role">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="">From</label>
+                        <input class="form-control form-control-lg" type="time"  name="artists[`+num+`][from]" placeholder="From">       
+                    </div>
+                    <div class="col-6">
+                        <label for="">To</label>
+                        <input class="form-control form-control-lg" type="time"  name="artists[`+num+`][to]" placeholder="To">
+                    </div>
+                </div>
+                <hr>
+            </div>
+            `
+            box.appendChild(newBox)
+            num += 1
+        }
+    
+        //---------------------------------------------------------
+        //         FOOD
+        //--------------------------------------------------------
+    
+        var num1 = 0
+        let box1 = document.querySelector('#foodBoxes')
+        let searchInput1 = document.querySelector('#searchInput1')
+        let searchResult1 = document.querySelector('#searchResult1')
+    
+        function searchFood(){
+            search1()
+        }
+    
+        async function search1(){
+            const response = await fetch(window.location.href+'/searchFood?search_query='+searchInput1.value) 
+            const res = await response.json();
+            // console.log(res)
+            for(i = 0; i < res.length; i++){
+                let item = res[i]
+                // console.log(i,item)
+    
+                let newItem = document.createElement('div')
+                newItem.innerHTML = `
+                <div class="list-group-item list-group-item-action" id="searchBox" 
+                    onclick="addFoodBox('`+item.name+`','`+item._id+`')"
+                >
+                    <h5>`+item.name+`</h5>
+                    <img src="`+window.location.origin+"/"+item.image+`" alt="" class="searchImages">
+                </div>
+                `
+                searchResult1.appendChild(newItem)
+            }
+        }
+        
+        function addFoodBox(name, id){
+            searchResult1.innerHTML = ""
+            newBox = document.createElement('div')
+            newBox.innerHTML += `
+            <div id='div1-`+num1+`' style="position:relative">
+                <h3>`+name+`</h3>
+                <button 
+                    type="button" 
+                    class="btn vtn-outline btn-danger" 
+                    style="position: absolute; top: 0; right: 0; padding: 6px 10px;"
+                    onclick="document.querySelector('#div1-`+num1+`').hidden = true; document.querySelector('#food-`+num1+`').value='1'">
+                        Remove
+                </button>
+    
+                <input type="number" name="food[`+num1+`][deleted]" id="food-`+num1+`" value="0" hidden>
+                <input type="text"  name="food[`+num1+`][id]" value="`+id+`" hidden>
+            <hr>
+            </div>
+            `
+            box1.appendChild(newBox)
+            num1 += 1
+        }
+    
+        //---------------------------------------------------------
+        //         DRINKS
+        //--------------------------------------------------------
+        
+        var num2 = 0
+        let box2 = document.querySelector('#drinkBoxes')
+        let searchInput2 = document.querySelector('#searchInput2')
+        let searchResult2 = document.querySelector('#searchResult2')
+    
+        function searchDrink(){
+            search2()
+        }
+    
+        async function search2(){
+            const response = await fetch(window.location.href+'/searchDrink?search_query='+searchInput2.value) 
+            const res = await response.json();
+            // console.log(res)
+            for(i = 0; i < res.length; i++){
+                let item = res[i]
+                // console.log(i,item)
+    
+                let newItem = document.createElement('div')
+                newItem.innerHTML = `
+                <div class="list-group-item list-group-item-action" id="searchBox" 
+                    onclick="addDrinkBox('`+item.name+`','`+item._id+`')"
+                >
+                    <h5>`+item.name+`</h5>
+                    <img src="`+window.location.origin+"/"+item.image+`" alt="" class="searchImages">
+                </div>
+                `
+                searchResult2.appendChild(newItem)
+            }
+        }
+        
+        function addDrinkBox(name, id){
+            searchResult2.innerHTML = ""
+            newBox = document.createElement('div')
+            newBox.innerHTML += `
+            <div id='div2-`+num2+`' style="position:relative">
+                <h3>`+name+`</h3>
+                <button 
+                    type="button" 
+                    class="btn vtn-outline btn-danger" 
+                    style="position: absolute; top: 0; right: 0; padding: 6px 10px;"
+                    onclick="document.querySelector('#div2-`+num2+`').hidden = true; document.querySelector('#drinks-`+num2+`').value='1'">
+                        Remove
+                </button>
+    
+                <input type="number" name="drinks[`+num2+`][deleted]" id="drinks-`+num2+`" value="0" hidden>
+                <input type="text"  name="drinks[`+num2+`][id]" value="`+id+`" hidden>
+            <hr>
+            </div>
+            `
+            box2.appendChild(newBox)
+            num2 += 1
+        }
+    
+        //---------------------------------------------------------
+        //         GOODIES
+        //--------------------------------------------------------
+        
+        var num3 = 0
+        let box3 = document.querySelector('#goodieBoxes')
+        let searchInput3 = document.querySelector('#searchInput3')
+        let searchResult3 = document.querySelector('#searchResult3')
+    
+        function searchGoodie(){
+            search3()
+        }
+    
+        async function search3(){
+            const response = await fetch(window.location.href+'/searchGoodie?search_query='+searchInput3.value) 
+            const res = await response.json();
+            // console.log(res)
+            for(i = 0; i < res.length; i++){
+                let item = res[i]
+                // console.log(i,item)
+    
+                let newItem = document.createElement('div')
+                newItem.innerHTML = `
+                <div class="list-group-item list-group-item-action" id="searchBox" 
+                    onclick="addGoodieBox('`+item.name+`','`+item._id+`')"
+                >
+                    <h5>`+item.name+`</h5>
+                    <img src="`+window.location.origin+"/"+item.image+`" alt="" class="searchImages">
+                </div>
+                `
+                searchResult3.appendChild(newItem)
+            }
+        }
+        
+        function addGoodieBox(name, id){
+            searchResult3.innerHTML = ""
+            newBox = document.createElement('div')
+            newBox.innerHTML += `
+            <div id='div3-`+num3+`' style="position:relative">
+                <h3>`+name+`</h3>
+                <button 
+                    type="button" 
+                    class="btn vtn-outline btn-danger" 
+                    style="position: absolute; top: 0; right: 0; padding: 6px 10px;"
+                    onclick="document.querySelector('#div3-`+num3+`').hidden = true; document.querySelector('#goodies-`+num3+`').value='1'">
+                        Remove
+                </button>
+    
+                <input type="number" name="goodies[`+num3+`][deleted]" id="goodies-`+num3+`" value="0" hidden>
+                <input type="text"  name="goodies[`+num3+`][id]" value="`+id+`" hidden>
+            <hr>
+            </div>
+            `
+            box3.appendChild(newBox)
+            num3 += 1
+        }
+
+        //-----------------------------------------------------------
+    //       TICKET TYPES
+    //----------------------------------------------------------
+
+    var num4 = 0
+    let box4 = document.querySelector('#typeBoxes')
+    let searchInput4 = document.querySelector('#searchInput4')
+    let searchResult4 = document.querySelector('#searchResult4')
+
+    function searchType(){
+        search4()
+    }
+
+    async function search4(){
+        const response = await fetch(window.location.href+'/searchType?search_query='+searchInput4.value) 
+        const res = await response.json();
+        // console.log(res)
+        for(i = 0; i < res.length; i++){
+            let item = res[i]
+            // console.log(i,item)
+
+            let newItem = document.createElement('div')
+            newItem.innerHTML = `
+            <div class="list-group-item list-group-item-action" id="searchBox" 
+                onclick="addTypeBox('`+item.name+`','`+item._id+`')"
+            >
+                <h5>`+item.name+`</h5>
+            </div>
+            `
+            searchResult4.appendChild(newItem)
+        }
+    }
+    
+    function addTypeBox(name, id){
+        searchResult4.innerHTML = ""
+        newBox = document.createElement('div')
+        newBox.innerHTML += `
+        <div id='div4-`+num4+`' style="position:relative">
+            <h3>`+name+`</h3>
+            <button 
+                type="button" 
+                class="btn vtn-outline btn-danger" 
+                style="position: absolute; top: 0; right: 0; padding: 6px 10px;"
+                onclick="document.querySelector('#div4-`+num4+`').hidden = true; document.querySelector('#type-`+num4+`').value='1'">
+                    Remove
+            </button>
+
+            <input type="number" name="types[`+num4+`][deleted]" id="type-`+num4+`" value="0" hidden>
+            <input type="text"  name="types[`+num4+`][id]" value="`+id+`" hidden>
+            <div class="row">
+                <div class="col-6">
+                    <label for="">From</label>
+                    <input class="form-control form-control-lg" type="number"  name="types[`+num4+`][price]" placeholder="Price">       
+                </div>
+                <div class="col-6">
+                    <label for="">To</label>
+                    <input class="form-control form-control-lg" type="text"  name="types[`+num4+`][currency]" placeholder="Currency">
+                </div>
+            </div>
+            <hr>
+        </div>
+        `
+        box4.appendChild(newBox)
+        num4 += 1
+    }
+
+    //-----------------------------------------------------------
+    //       GUEST OPTIONS
+    //----------------------------------------------------------
+
+    var num5 = 0
+    let box5 = document.querySelector('#guestBoxes')
+
+    function addGuestOption(name, id){
+        newBox = document.createElement('div')
+        newBox.innerHTML += `
+        <div id='div5-`+num5+`' style="position:relative">
+            <button 
+                type="button" 
+                class="btn vtn-outline btn-danger mx-1" 
+                style="width: 100%; padding: 6px 10px;"
+                onclick="document.querySelector('#div5-`+num5+`').hidden = true; document.querySelector('#guest-`+num5+`').value='1'">
+                    Remove
+            </button>
+
+            <input type="number" name="guest_options[`+num5+`][deleted]" id="guest-`+num5+`" value="0" hidden>
+            <div class="row my-1">
+                <div class="col-6">
+                    <input class="form-control form-control-lg" type="number"  name="guest_options[`+num5+`][count]" placeholder="Count">       
+                </div>
+                <div class="col-6">
+                    <input class="form-control form-control-lg" type="number"  name="guest_options[`+num5+`][food]" placeholder="Food">
+                </div>
+            </div>
+            <div class="row my-1">
+                <div class="col-6">
+                    <input class="form-control form-control-lg" type="number"  name="guest_options[`+num5+`][goodies]" placeholder="Goodies">       
+                </div>
+                <div class="col-6">
+                    <input class="form-control form-control-lg" type="number"  name="guest_options[`+num5+`][drinks]" placeholder="Drinks">
+                </div>
+            </div>
+            
+            <hr>
+        </div>
+        `
+        box5.appendChild(newBox)
+        num5 += 1
+    }
+    
+    </script>

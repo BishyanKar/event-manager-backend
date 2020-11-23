@@ -1,0 +1,96 @@
+<%- include('./header') %>
+
+<!-- wrapper  -->
+
+<div class="dashboard-wrapper">
+    <div class="dashboard-ecommerce">
+        <div class="container-fluid dashboard-content ">
+
+            <!-- pageheader  -->
+
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-header">
+                        <h2 class="pageheader-title">Bands</h2>
+
+                        <div class="page-breadcrumb">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/" class="breadcrumb-link">Dashboard</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">All Bands</li>
+                                </ol>
+                                <li class="nav-item" >
+                                    <a class="nav-link" href="/api/admin/add-band">
+                                        add band                                    
+                                    </a>
+                                </li>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- end pageheader  -->
+
+
+            <div class="row">
+                <!-- ============================================================== -->
+                <!-- top selling products  -->
+                <!-- ============================================================== -->
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card">
+                        <h5 class="card-header">All bands table</h5>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="bg-light">
+                                        <tr class="border-0">
+                                            <th class="border-0">name</th>
+                                            <th class="border-0">launch date</th>
+                                            <th class="border-0">description</th>
+                                            <th class="border-0">popularity</th>
+                                            <th class="border-0">edit</th>
+                                            <th class="border-0">delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>   
+                                        <% if (bands && bands.length) {%>  
+                                            <%bands.forEach( (b,i)=>{%>                                          
+                                                <tr>
+                                                    <td><%=b.name%></td>
+                                                    <td><%=b.description%></td>
+                                                    <td><%=b.name%></td>
+                                                    <td><%=b.popularity%></td>
+                                                    <td><a href="/api/admin/edit-band-id/<%= b._id %>" class="btn btn-dark btn-sm">Edit</a></td>
+                                                    <td><a href="/api/admin/delete-band-view/<%= b._id %>" class="btn btn-danger btn-sm">Delete</a></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <!-- <td colspan="12"><a href="#" class="btn btn-outline-light float-right">View Details</a></td> -->
+                                                </tr>
+                                                <%})%>
+                                        <% }%>  
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================================== -->
+                <!-- end top selling products  -->
+                <!-- ============================================================== -->
+
+
+                
+            </div>
+        </div>
+        <script>
+            $(".custom-file-input").on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+            });
+        </script>
